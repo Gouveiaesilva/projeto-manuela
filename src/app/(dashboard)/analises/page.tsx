@@ -7,8 +7,6 @@ import Link from 'next/link'
 import { formatCurrency, formatNumber, formatCNPJ } from '@/lib/utils'
 
 export default async function AnalisesPage() {
-  const supabase = await createClient()
-
   let analises: {
     id: string
     emit_razao_social: string
@@ -24,6 +22,7 @@ export default async function AnalisesPage() {
   }[] = []
 
   try {
+    const supabase = await createClient()
     const { data } = await supabase
       .from('analises')
       .select('id, emit_razao_social, emit_cnpj, numero_nfe, valor_nf, margem_media, carga_media_percentual, total_produtos, produtos_lucrativos, produtos_deficitarios, created_at')

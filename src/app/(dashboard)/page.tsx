@@ -8,8 +8,6 @@ import { FileUp, ArrowRight, History, Calculator } from 'lucide-react'
 import { formatCurrency, formatNumber, formatCNPJ } from '@/lib/utils'
 
 export default async function DashboardPage() {
-  const supabase = await createClient()
-
   let user = null
   let totalClientes = 0
   let totalAnalises = 0
@@ -27,6 +25,7 @@ export default async function DashboardPage() {
   }[] = []
 
   try {
+    const supabase = await createClient()
     const { data: { user: u } } = await supabase.auth.getUser()
     user = u
 

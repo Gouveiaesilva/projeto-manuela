@@ -26,12 +26,18 @@ const atividadeLabels: Record<string, string> = {
 }
 
 export default async function ClientesPage() {
-  const supabase = await createClient()
+  let clientes: { id: string; razao_social: string; nome_fantasia: string | null; cnpj: string; regime: string; atividade: string }[] | null = null
 
-  const { data: clientes, error } = await supabase
-    .from('clientes')
-    .select('*')
-    .order('razao_social')
+  try {
+    const supabase = await createClient()
+    const { data } = await supabase
+      .from('clientes')
+      .select('*')
+      .order('razao_social')
+    clientes = data
+  } catch {
+    // Supabase não configurado
+  }
 
   return (
     <div className="space-y-6">
