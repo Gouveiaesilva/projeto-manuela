@@ -1,0 +1,6 @@
+export { encontrarFaixa, calcularAliquotaEfetiva, calcularCargaTributariaSimples } from './simples-nacional'
+export { calcularICMSST, calcularBaseICMSST } from './icms-st'
+export { calcularCustoTotal, custoComposicaoVazio } from './formacao-custo'
+export { calcularPrecoVenda } from './precificacao'
+export { calcularKPIs } from './kpi'
+export { gerarSimulacao, encontrarPontoEquilibrio } from './simulacao'
